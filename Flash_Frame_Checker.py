@@ -196,7 +196,7 @@ Run = 'Run'
 Status = 'Status'
 
 window = [ui.VGroup([
-    ui.Label({"Text": "<a href='http://www.baidu.com' style='color: #FA5B4A; text-decoration: none'>错帧检查</a>", "Alignment": {"AlignHCenter": True, "AlignVCenter": True}, "Weight": 0.1, "OpenExternalLinks" : True,}),
+    ui.Label({"Text": "<a href='https://github.com/laciechang/resolve_flash_frame_checker' style='color: #FA5B4A; text-decoration: none'>错帧检查</a>", "Alignment": {"AlignHCenter": True, "AlignVCenter": True}, "Weight": 0.1, "OpenExternalLinks" : True,}),
     ui.Tree({"ID": Cliptree}),
     ui.HGroup({"Weight": 0, "StyleSheet": "max-height:30px"}, [
         ui.Label({"Text": "阈值",  "Weight": 0}),
