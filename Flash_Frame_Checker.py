@@ -9,7 +9,24 @@
 # -----------------------------------------------------
 # 本工具仅支持在达芬奇内运行
 # -----------------------------------------------------
+lang = 'en_US'
 
+gui_text = {
+    'check': 'Check',
+    'threshold': 'Threshold',
+    'found': 'Found',
+    'results': 'results',
+    'title': 'Flash Frame Checker',
+}
+
+if lang == 'zh_CN':
+    gui_text = {
+        'check': '检查',
+        'threshold': '阈值',
+        'found': '找到',
+        'results': '个结果',
+        'title': '错帧检查',
+    }
 
 RESOLVE_FPS_MAPPING = {             # 虽然很奇怪但是得问问BMD为什么会有这种神奇的帧率表达方式
     '16': 16.0,     '18': 18.0,
@@ -196,14 +213,14 @@ Run = 'Run'
 Status = 'Status'
 
 window = [ui.VGroup([
-    ui.Label({"Text": "<a href='https://github.com/laciechang/resolve_flash_frame_checker' style='color: #FA5B4A; text-decoration: none'>错帧检查</a>", "Alignment": {"AlignHCenter": True, "AlignVCenter": True}, "Weight": 0.1, "OpenExternalLinks" : True,}),
+    ui.Label({"Text": "<a href='https://github.com/laciechang/resolve_flash_frame_checker' style='color: #FA5B4A; text-decoration: none'>%s</a>"%(gui_text['title']), "Alignment": {"AlignHCenter": True, "AlignVCenter": True}, "Weight": 0.1, "OpenExternalLinks" : True,}),
     ui.Tree({"ID": Cliptree}),
     ui.HGroup({"Weight": 0, "StyleSheet": "max-height:30px"}, [
-        ui.Label({"Text": "阈值",  "Weight": 0}),
+        ui.Label({"Text": gui_text['threshold'],  "Weight": 0}),
         ui.SpinBox({"ID": CheckRange, "Value": 2, "Minimum": 1, "Maximum": 99, "SingleStep": 1}),
         ui.HGap(),
         ui.Label({"ID": Status,"StyleSheet": "min-width:80px", "Weight": 0 }),
-        ui.Button({"ID": Run, "Text": "检查", "Weight": 0}),
+        ui.Button({"ID": Run, "Text": gui_text['check'], "Weight": 0}),
     ]),
 ])]
 
@@ -227,7 +244,7 @@ def _run(ev):
     for interv in range(1, checkrange+1):
         res = compareInpoint(interv, itm[Cliptree])
         totalCount += len(res)
-    itm[Status].Text = '找到 %s 个结果'%(str(totalCount))
+    itm[Status].Text = gui_text['found'] + " " + str(totalCount) + " " + gui_text['results']
 
 def _jump_to_target_clip(ev):
     timecode = itm[Cliptree].CurrentItem().Text[1]
