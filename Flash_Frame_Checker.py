@@ -231,6 +231,9 @@ dlg = disp.AddWindow({
                                     600, 300, # position when starting
                                     400, 300 #width, height
                          ], 
+                        "WindowFlags":{
+                            "Window": True,
+                        }
                         }, window)
 
 itm = dlg.GetItems()
